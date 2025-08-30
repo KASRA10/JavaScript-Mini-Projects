@@ -22,10 +22,12 @@ html {
 
 body {
   font-family: var(--primary-font), sans-serif;
+  background-color: var(--white-color);
+  height: 100vh;
   display: flex;
+  flex-flow: column nowrap;
   justify-content: center;
   align-items: center;
-  justify-items: center;
 }
 
 * {
@@ -95,3 +97,12 @@ a.button:hover:after {
 }
 /* End Of PublicItems */
 /* End Of Reset CSS */
+/* Body */
+div.container {
+  width: 60%;
+  height: 75vh;
+  background-color: white;
+  border-radius: var(--default-radius);
+  box-shadow: 3px 6px 10px 3px rgba(0, 0, 0, 0.15);
+}
+/* End Of Body */
