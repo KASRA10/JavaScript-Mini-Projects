@@ -1,0 +1,51 @@
+/* Font */
+@font-face {
+  src: url("../src/assets/fonts/Rubik.ttf");
+  font-family: "Rubik";
+  font-weight: normal;
+  font-style: normal;
+}
+
+:root {
+  --primary-color: ;
+  --secondary-color: ;
+  --yellow-color: ;
+  --white-color: ;
+  --dark-color: ;
+  --default-radius: 15px;
+  --primary-font: "Rubik";
+}
+
+/* Reset CSS */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--primary-font), sans-serif;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  border: none;
+  outline: none;
+  box-sizing: border-box;
+}
+
+img {
+  width: 100%;
+}
+
+a {
+  text-decoration: none;
+}
+
+p {
+  line-height: 1.6em;
+}
+
+button {
+  background: none;
+}
+/* End Of Reset CSS */
