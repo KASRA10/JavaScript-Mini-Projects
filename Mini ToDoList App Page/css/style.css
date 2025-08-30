@@ -22,6 +22,7 @@ html {
 
 body {
   font-family: var(--primary-font), sans-serif;
+  text-transform: capitalize;
   background-color: var(--white-color);
   height: 100vh;
   display: flex;
@@ -36,6 +37,33 @@ body {
   border: none;
   outline: none;
   box-sizing: border-box;
+}
+
+ul {
+  list-style-type: none;
+}
+
+ol#to-do-list {
+  width: 80%;
+  font-family: inherit;
+  list-style-position: inside;
+}
+
+ol#to-do-list li {
+  width: 100%;
+  height: 30px;
+  line-height: 30px;
+  background-color: var(--dark-color);
+  color: var(--secondary-color);
+  border-radius: var(--default-radius);
+  padding: 0 15px;
+  margin: 15px auto;
+  cursor: pointer;
+}
+
+ol#to-do-list li:hover {
+  background-color: var(--secondary-color);
+  color: var(--dark-color);
 }
 
 img {
@@ -55,6 +83,13 @@ button {
 }
 
 /* PublicItems */
+hr {
+  background-color: var(--dark-color);
+  height: 0.4rem;
+  border-radius: var(--default-radius);
+  width: 80%;
+  margin: 15px auto;
+}
 button a.button {
   display: block;
   padding: 1rem 3.5rem;
@@ -104,5 +139,53 @@ div.container {
   background-color: white;
   border-radius: var(--default-radius);
   box-shadow: 3px 6px 10px 3px rgba(0, 0, 0, 0.15);
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 1rem;
+  overflow-y: auto;
+}
+
+div.container h1 {
+  color: var(--dark-color);
+  text-align: center;
+  margin: 15px;
+}
+
+div.container h1::first-letter {
+  color: var(--primary-color);
+}
+
+div.container h1 + em {
+  display: block;
+  text-align: center;
+  color: var(--dark-color);
+}
+
+div.container h1 + em::first-letter {
+  color: var(--primary-color);
+}
+
+div.container div.form-area {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+div.container div.form-area input[type="text"]#input {
+  background-color: var(--dark-color);
+  padding: 1rem 3.5rem;
+  margin: 1rem auto;
+  border-radius: var(--default-radius);
+  font-size: 18px;
+  color: var(--secondary-color);
+}
+
+div.container div.form-area input[type="text"]#input::placeholder {
+  color: var(--secondary-color);
+  opacity: 0.5;
 }
 /* End Of Body */

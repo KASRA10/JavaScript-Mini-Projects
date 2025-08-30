@@ -1,5 +1,14 @@
-@media (max-width: 768px) {
+@media (max-width: 920px) {
   div.container {
     width: 90%;
+  }
+
+  div.container h1 {
+    font-size: 1.5rem;
+  }
+
+  div.container div.form-area {
+    flex-flow: column wrap;
+    gap: 0px;
   }
 }
