@@ -19,7 +19,7 @@
 /* End Font And Colors */
 
 /* Reset CSS */
-.html {
+html {
   scroll-behavior: smooth;
 }
 
