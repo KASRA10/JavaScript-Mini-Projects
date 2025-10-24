@@ -23,7 +23,8 @@ JavaScript (JS) is a high-level, dynamic programming language that powers the in
 
 The **Document Object Model (DOM)** is a programming interface for HTML and XML documents. It represents the page so that programs can change the document structure, style, and content. JavaScript interacts with the DOM to dynamically update the UI without reloading the page.
 
-Example:  
+Example:
+
 ```js
 document.querySelector("#button").addEventListener("click", () => {
   alert("Button clicked!");
@@ -42,10 +43,12 @@ Mini projects are small, focused applications that help you practice specific Ja
 - Creating a portfolio of practical work
 
 Examples include:
+
 - To-do lists
 - Calculators
 - Form validators
 - Interactive games
+- And So Forth . . .
 
 ---
 
@@ -70,12 +73,12 @@ To contribute a new mini project:
 
 A **JavaScript engine** is the program that executes JS code. Every browser has its own engine:
 
-| Browser      | JS Engine     |
-|--------------|---------------|
-| Chrome       | V8            |
-| Firefox      | SpiderMonkey  |
-| Safari       | JavaScriptCore|
-| Edge         | Chakra (legacy) / V8 (current) |
+| Browser | JS Engine                      |
+| ------- | ------------------------------ |
+| Chrome  | V8                             |
+| Firefox | SpiderMonkey                   |
+| Safari  | JavaScriptCore                 |
+| Edge    | Chakra (legacy) / V8 (current) |
 
 These engines parse, compile, and run your JS code efficiently.
 
@@ -86,6 +89,7 @@ These engines parse, compile, and run your JS code efficiently.
 Feel free to contribute and help grow this repository! Whether you're fixing bugs, adding new projects, or improving documentation—**your input is valued**.
 
 ### How to Contribute:
+
 - Fork the repo
 - Create a new branch
 - Add your project or improvements
