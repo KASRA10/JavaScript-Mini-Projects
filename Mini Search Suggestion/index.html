@@ -41,14 +41,19 @@
     <title>JS Search Suggestion</title>
     <!-- InterNal CSS ==> Generally Using External CSS is BetterThat Other Ways -->
     <style>
+      * {
+        margin: 0;
+        padding: 0;
+        border: none;
+        box-sizing: border-box;
+      }
+
       html,
       body {
         width: 100%;
         height: 100vh;
-        margin: 0;
         font-family: "Atkinson Hyperlegible Mono", monospace;
         background-color: #f0f0f0;
-        height: 100vh;
         display: flex;
         flex-flow: column nowrap;
         justify-content: center;
@@ -58,22 +63,180 @@
 
       div.container {
         width: 80%;
-        height: 420px;
-        margin: auto 0;
-        padding: 25px;
-        text-align: center;
+        max-width: 600px; /* optional: limit max width for better look */
+        padding: 50px 25px;
         background-color: #ffffff;
         border-radius: 25px;
-        box-sizing: 3px 6px -17px 30px rgba(0, 0, 0, 0.2);
+        box-shadow: 3px 6px 17px rgba(0, 0, 0, 0.2);
+        text-align: center;
+      }
+
+      /* NEW: Wrapper for input + suggestions */
+      .search-wrapper {
+        position: relative; /* Important: makes ul position relative to this */
+        width: 100%;
+        margin-bottom: 20px;
+      }
+
+      input#searchField {
+        width: 100%;
+        padding: 12px 20px;
+        font-size: 18px;
+        border: #141618 solid 2px;
+        background-color: #fff;
+        outline: none;
+        border-radius: 25px;
+      }
+
+      ul#suggestion {
+        position: absolute;
+        top: 100%; /* directly below the input */
+        left: 0;
+        right: 0; /* stretches to full width of wrapper */
+        margin: 5px 0 0 0; /* small gap below input */
+        background-color: #fff;
+        list-style: none;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        border-radius: 15px;
+        max-height: 300px;
+        overflow-y: auto;
+        z-index: 10;
+        display: none; /* hidden by default */
+      }
+
+      /* Show when it has items */
+      ul#suggestion:not(:empty) {
+        display: block;
+      }
+
+      ul#suggestion li {
+        padding: 12px 20px;
+        cursor: pointer;
+        text-align: left;
+        transition: background-color 0.2s;
+      }
+
+      ul#suggestion li:hover {
+        background-color: #f5f5f5;
+      }
+
+      button[type="button"] {
+        padding: 12px 24px;
+        font-size: 18px;
+        font-weight: bold;
+        color: #fff;
+        background-color: #141618;
+        border: none;
+        border-radius: 25px;
+        cursor: pointer;
       }
     </style>
     <!-- End Of InterNal Css -->
   </head>
   <body>
-    <section>
-      <div class="container">
-        
-      </div>
-    </section>
+    <main>
+      <section>
+        <div class="container">
+          <div class="search-wrapper">
+            <input
+              type="text"
+              placeholder="Search Suggestion"
+              id="searchField"
+            />
+            <ul id="suggestion"></ul>
+          </div>
+
+          <button type="button">Search</button>
+        </div>
+      </section>
+    </main>
+    <!-- Script Logic -->
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const cities = [
+          "Tokyo, Japan",
+          "New York City, USA",
+          "Paris, France",
+          "London, UK",
+          "Osaka, Japan",
+          "Singapore, Singapore",
+          "Dubai, UAE",
+          "Seoul, South Korea",
+          "Bangkok, Thailand",
+          "Hong Kong, China",
+          "Shanghai, China",
+          "Los Angeles, USA",
+          "Rome, Italy",
+          "Miami, USA",
+          "Las Vegas, USA",
+          "Sydney, Australia",
+          "Toronto, Canada",
+          "San Francisco, USA",
+          "Barcelona, Spain",
+          "Berlin, Germany",
+          "Chicago, USA",
+          "Amsterdam, Netherlands",
+          "Madrid, Spain",
+          "Moscow, Russia",
+          "Istanbul, Turkey",
+          "Vienna, Austria",
+          "Mumbai, India",
+          "Kolkata, India",
+          "Delhi, India",
+          "Bangalore, India",
+          "Hyderabad, India",
+          "Pune, India",
+        ];
+
+        const searchField = document.getElementById("searchField");
+        const ulSuggestion = document.getElementById("suggestion");
+
+        searchField.addEventListener("keyup", (event) => {
+          const query = searchField.value.trim().toLowerCase();
+
+          // Clear previous suggestions
+          ulSuggestion.innerHTML = "";
+
+          // If input is empty, hide suggestions
+          if (query === "") {
+            return;
+          }
+
+          // Filter cities
+          const filteredCities = cities.filter((item) =>
+            item.toLowerCase().includes(query)
+          );
+
+          // Limit to 5 suggestions
+          const length = Math.min(filteredCities.length, 5);
+
+          // Create and append <li> elements
+          for (let i = 0; i < length; i++) {
+            const li = document.createElement("li");
+            li.textContent = filteredCities[i];
+            ulSuggestion.appendChild(li);
+          }
+        });
+
+        // Click on suggestion to fill input and clear list
+        ulSuggestion.addEventListener("click", (event) => {
+          if (event.target.tagName === "LI") {
+            searchField.value = event.target.textContent;
+            ulSuggestion.innerHTML = "";
+            searchField.focus();
+          }
+        });
+
+        // hide suggestions when clicking outside
+        document.addEventListener("click", (event) => {
+          if (
+            !searchField.contains(event.target) &&
+            !ulSuggestion.contains(event.target)
+          ) {
+            ulSuggestion.innerHTML = "";
+          }
+        });
+      });
+    </script>
   </body>
 </html>
