@@ -46,8 +46,9 @@
             <div class="hours"></div>
             <div class="separator">:</div>
             <div class="minutes"></div>
-            <div class="period"></div>
+            <div class="separator">:</div>
             <div class="seconds"></div>
+            <div class="period"></div>
           </div>
           <div class="wrapper"></div>
           <div class="calender">
@@ -62,6 +63,16 @@
         </div>
       </section>
     </main>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="./js/main.js"></script>
+    <script>
+      $(function () {
+        const startYear = 2021;
+        const currentYear = new Date().getFullYear();
+        const yearText =
+          currentYear > startYear ? `${startYear}-${currentYear}` : currentYear;
+        $("#copy-right").text(yearText);
+      });
+    </script>
   </body>
 </html>

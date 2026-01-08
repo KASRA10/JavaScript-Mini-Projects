@@ -1,6 +1,10 @@
 :root {
-  --primary-color: ##1b264c;
+  --primary-color: #1b264c;
   --secondary-color: #fafafa;
+  --js-word-specialColor: #ffd100;
+  --shadow-color: rgba(27, 38, 76, 0.1);
+  --border-radius: 25px;
+  --transition: all 0.3s ease;
 }
 
 /* Reset CSS */
@@ -10,8 +14,14 @@ html {
 
 body {
   background-color: var(--secondary-color);
-  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: var(--primary-color);
   text-transform: capitalize;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
 }
 
 * {
@@ -22,10 +32,6 @@ body {
   box-sizing: border-box;
 }
 
-img {
-  width: 100%;
-}
-
 ul {
   list-style-type: none;
 }
@@ -34,11 +40,347 @@ a {
   text-decoration: none;
 }
 
+/* Main container with flexbox */
 .container {
-  width: 80%;
+  width: 100%;
   height: fit-content;
-  padding: 15px;
+  padding: 30px;
   margin: 0 auto;
-  border-radius: 25px;
+  border-radius: var(--border-radius);
+  background: white;
+  box-shadow: 0 10px 30px var(--shadow-color);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+  transition: var(--transition);
 }
-/* End Reset CSS */
+
+.container:hover {
+  box-shadow: 0 15px 40px rgba(27, 38, 76, 0.15);
+}
+
+/* Header section */
+.container.header {
+  width: 100%;
+  text-align: center;
+  padding: 0;
+}
+
+.title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--primary-color) 0%, #2c3e50 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 10px;
+}
+
+span#js-word {
+  color: var(--js-word-specialColor);
+  font-weight: 800;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Clock body - ALL IN ONE ROW */
+.container.body {
+  width: 100%;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: nowrap; /* Prevents wrapping to new line */
+  padding: 25px;
+  background: linear-gradient(145deg, #f0f0f0, #ffffff);
+  border-radius: 20px;
+  box-shadow: inset 5px 5px 10px #e0e0e0, inset -5px -5px 10px #ffffff;
+}
+
+/* Time elements in single row */
+.hours,
+.minutes,
+.seconds,
+.separator,
+.period {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hours,
+.minutes,
+.seconds {
+  font-size: 4.5rem;
+  font-weight: 800;
+  font-family: "Courier New", monospace;
+  color: var(--primary-color);
+  background: white;
+  padding: 25px 30px;
+  border-radius: 15px;
+  min-width: 140px;
+  text-align: center;
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.1);
+  transition: var(--transition);
+}
+
+.separator {
+  font-size: 4rem;
+  font-weight: 800;
+  color: var(--primary-color);
+  margin: 0 10px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  padding: 0 5px;
+}
+
+.period {
+  font-size: 3.5rem;
+  font-weight: 800;
+  background: var(--primary-color);
+  color: white;
+  padding: 25px 30px;
+  border-radius: 15px;
+  min-width: 160px;
+  margin-left: 15px;
+  text-align: center;
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Hover effects */
+.hours:hover,
+.minutes:hover,
+.seconds:hover,
+.period:hover {
+  transform: translateY(-5px);
+  box-shadow: 8px 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Calendar with flexbox */
+.calender {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  padding: 25px;
+  background: var(--primary-color);
+  border-radius: 20px;
+  color: white;
+}
+
+.day,
+.month,
+.day-number,
+.year {
+  font-size: 2rem;
+  font-weight: 600;
+  padding: 15px 25px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  backdrop-filter: blur(10px);
+  text-align: center;
+  min-width: 140px;
+  transition: var(--transition);
+}
+
+.day-number {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--secondary-color);
+  font-weight: 800;
+}
+
+/* Footer */
+.footer {
+  width: 100%;
+  text-align: center;
+  padding: 20px;
+  font-size: 1.1rem;
+  color: #666;
+  border-top: 2px solid #f0f0f0;
+}
+
+#copy-right {
+  color: var(--primary-color);
+  font-weight: 600;
+}
+
+/* Wrapper - if needed for additional content */
+.wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .container {
+    max-width: 90%;
+  }
+
+  .container.body {
+    padding: 20px;
+  }
+
+  .hours,
+  .minutes,
+  .seconds {
+    font-size: 3.5rem;
+    padding: 20px 25px;
+    min-width: 110px;
+  }
+
+  .separator {
+    font-size: 3rem;
+  }
+
+  .period {
+    font-size: 3rem;
+    padding: 20px 25px;
+    min-width: 140px;
+  }
+}
+
+@media (max-width: 768px) {
+  body {
+    padding: 10px;
+  }
+
+  .container {
+    padding: 20px;
+    gap: 20px;
+  }
+
+  .title {
+    font-size: 1.8rem;
+  }
+
+  .container.body {
+    flex-flow: column nowrap;
+    padding: 15px;
+    gap: 5px;
+  }
+
+  .hours,
+  .minutes,
+  .seconds {
+    font-size: 2.2rem;
+    padding: 15px;
+    min-width: 70px;
+  }
+
+  .separator {
+    font-size: 2rem;
+    margin: 0 5px;
+  }
+
+  .period {
+    font-size: 2rem;
+    padding: 15px;
+    min-width: 100px;
+    margin-left: 10px;
+  }
+
+  .calender {
+    flex-flow: column nowrap;
+    gap: 10px;
+    padding: 20px;
+  }
+
+  .day,
+  .month,
+  .day-number,
+  .year {
+    font-size: 1.2rem;
+    min-width: 100px;
+    padding: 10px 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 15px;
+    gap: 15px;
+  }
+
+  .title {
+    font-size: 1.5rem;
+  }
+
+  .container.body {
+    padding: 10px;
+  }
+
+  .hours,
+  .minutes,
+  .seconds {
+    font-size: 1.8rem;
+    padding: 12px;
+    min-width: 55px;
+  }
+
+  .separator {
+    font-size: 1.6rem;
+    margin: 0 3px;
+  }
+
+  .period {
+    font-size: 1.6rem;
+    padding: 12px;
+    min-width: 80px;
+    margin-left: 5px;
+  }
+
+  .day,
+  .month,
+  .day-number,
+  .year {
+    font-size: 1rem;
+    min-width: 80px;
+    padding: 8px 12px;
+  }
+
+  .footer {
+    font-size: 0.9rem;
+    padding: 15px;
+  }
+}
+
+/* For very small screens, make time wrap but only if absolutely necessary */
+@media (max-width: 360px) {
+  .container.body {
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+
+  .period {
+    margin-left: 0;
+    margin-top: 10px;
+  }
+}
+
+/* Animation for clock update */
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.seconds {
+  animation: pulse 1s ease-in-out;
+}
+
+/* Glow effect for active time unit */
+.hours:active,
+.minutes:active,
+.seconds:active {
+  background: linear-gradient(145deg, #ffffff, #f0f0f0);
+}
